@@ -1,1 +1,8 @@
-README
+The calculator app works as follows:
+When a number or operator button is pressed, a string containing the value (e.g. "0" or "+") is added to an array. Backspace removes the last value from the array, and clear re-initializes it.
+Once a formula is finished, the user presses "=". This calls the compute method, which does the following:
+    First, it checks for syntax errors. If there are none, it converts the formula into a usable array. Instead of ["3","3","+","4"], it is converted to ["33","+","4"].
+    Now, it calls the operate method. Operate takes a parameter that tells it if it should do division, multiplication, addition, or subtraction. We call the operate method, in order, with division, multiplication, subtraction, and addition. It operates (using multiplication as an example) by looking for "*" in the array, and then multiplying the value before it by the value after it. Then those three value in the array are replace by the single value, the product. We keep calling multiply until there are no more "*". This is repeated for the 4 operations.
+    Now, our array has one object, an NSDecimalNumber containing the answer. We convert this to an NSString and display it as the result.
+    
+The calculator displays the entire formula that you type on the top bar, and then the answer on the lower bar. Backspace is implemented. When a result is displayed, if you press an operator, the result is automatically transferred to the formula bar (so you can operate on the previous result).

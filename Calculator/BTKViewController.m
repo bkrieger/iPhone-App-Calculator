@@ -58,6 +58,7 @@
     [self updateResultBar];
 }
 
+//Resets the result and formula array
 - (IBAction)clear:(id)sender {
     _formula_array = [NSMutableArray new];
     _result = @"";
@@ -65,6 +66,7 @@
     [self updateResultBar];
 }
 
+//Removes the last value from the formula array
 - (IBAction)backSpace:(id)sender {
     [self clearResultBar];
     NSUInteger length = [_formula_array count];
@@ -74,6 +76,7 @@
     }
 }
 
+//Adds number to formula bar
 - (IBAction)addNumber:(UIButton *)sender {
     if(_result != @"") {
         [self clearResultBar];
@@ -85,6 +88,7 @@
     [self updateFormulaBar];
 }
 
+//Adds operator to formula bar
 - (IBAction)addOperator:(UIButton *)sender {
     NSInteger value = [sender tag];
     [self initializeFormula];
@@ -119,7 +123,7 @@
     [self updateFormulaBar];
 }
 
-
+//Checks if a String is not an operator
 - (BOOL)isNumChar:(NSString *)s {
     if ([s isEqual: @"+"]) {
         return false;
@@ -143,6 +147,8 @@
 //tag=4 means exponent
 - (BOOL) operate:(int) tag {
     NSUInteger operator_index;
+    
+    //Find operator
     switch (tag) {
         case 0:operator_index = [_formula_array indexOfObject:@"+"];
             break;
@@ -158,7 +164,7 @@
     }
     
     
-    
+    //If the operator is there, operate on the value before and after it
     if(operator_index != NSNotFound) {
         NSDecimalNumber *first = [_formula_array objectAtIndex:operator_index-1];
         NSDecimalNumber *second = [_formula_array objectAtIndex:operator_index+1];
@@ -188,6 +194,7 @@
         [_formula_array removeObjectAtIndex:operator_index];
         [_formula_array removeObjectAtIndex:operator_index];
 
+        //Call operate for the same value (e.g. multiplication) again
         [self operate:tag];
     }
     return true;
@@ -241,6 +248,7 @@
     return false;
 }
 
+//Convert the formula to a usable array
 - (BOOL)makeFormulaArrayConcise {
     if([self containsSyntaxErrors]) {
         return false;
@@ -278,19 +286,28 @@
     return true;
 }
 
+//Computes the result of the typed formula
 - (IBAction)compute:(id)sender {
+    //if no formula has been entered, stop
     if (_formula_array.count==0 || _formula_array==nil) {
         return;
     }
+    //Make the array concise, and continue if it had no syntax errors
     if([self makeFormulaArrayConcise]) {
         /*[self operate:4];*/
+        
+        //Do division, multiplication, subtraction, and addition
+        //If division returns false, we had divide by zero, so result is Nan
         if([self operate:3]) {
             [self operate:2];
             [self operate:1];
             [self operate:0];
             
+            //If the operations worked (they should always work), set the result value
             if(_formula_array.count==1) {
                 NSString *answer = [[_formula_array objectAtIndex:0] stringValue];
+                //If the answer is too long before the decimal point, Overflow Error
+                //If the answer is too long after the decimal point, truncuate with ... automatically
                 if(answer.length>22 && ([answer rangeOfString:@"."].location==NSNotFound)) {
                     _result = @"Overflow Error";
                 } else {
