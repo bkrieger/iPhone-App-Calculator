@@ -16,6 +16,7 @@
 		C5DB50E71611F60200CEC834 /* BTKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DB50E61611F60200CEC834 /* BTKAppDelegate.m */; };
 		C5DB50EA1611F60200CEC834 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5DB50E81611F60200CEC834 /* MainStoryboard.storyboard */; };
 		C5DB50ED1611F60200CEC834 /* BTKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DB50EC1611F60200CEC834 /* BTKViewController.m */; };
+		C5DC7BFE1651FD9D008F55B8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5DC7BFD1651FD9D008F55B8 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		C5DB50E91611F60200CEC834 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		C5DB50EB1611F60200CEC834 /* BTKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTKViewController.h; sourceTree = "<group>"; };
 		C5DB50EC1611F60200CEC834 /* BTKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTKViewController.m; sourceTree = "<group>"; };
+		C5DC7BFD1651FD9D008F55B8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		C5DB50C71611F60200CEC834 = {
 			isa = PBXGroup;
 			children = (
+				C5DC7BFD1651FD9D008F55B8 /* Default-568h@2x.png */,
 				C5A08E871614013B00C419A0 /* README.md */,
 				C5DB50DC1611F60200CEC834 /* Calculator */,
 				C5DB50D51611F60200CEC834 /* Frameworks */,
@@ -156,6 +159,7 @@
 				C5DB50E11611F60200CEC834 /* InfoPlist.strings in Resources */,
 				C5DB50EA1611F60200CEC834 /* MainStoryboard.storyboard in Resources */,
 				C5A08E881614013B00C419A0 /* README.md in Resources */,
+				C5DC7BFE1651FD9D008F55B8 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,8 +253,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
 				INFOPLIST_FILE = "Calculator/Calculator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -261,8 +266,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
 				INFOPLIST_FILE = "Calculator/Calculator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
